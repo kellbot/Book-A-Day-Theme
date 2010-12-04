@@ -185,10 +185,16 @@ h3 { font-weight: bold; font-size: 14px;}
 /* content */
 
 .tagline {
+ margin: 10px 0;
+}
+
+.tagline p {
   font-family: trebuchet, "Trebuchet MS", arial, verdana, sans-serif;
   text-align : center;
-  font-weight: bold;
-  margin: 10px 15px !important;
+  font-style: italic;
+  font-size: 14px;
+  margin: 4px 15px !important;
+  padding: 0 !important;
 }
 
 .content {

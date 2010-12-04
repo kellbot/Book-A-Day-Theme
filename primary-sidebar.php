@@ -12,12 +12,16 @@
 	<a href="/">
 		<img class="logo" border="0" src="<?php bloginfo('template_directory'); ?>/images/bookaday_270.png" />
 	</a>
-<p class="tagline">
-Daily children’s book recommendations and events from Anita Silvey.<br>
-Discover the stories behind the children’s book classics . . .<br>
-The new books on their way to becoming classics . . .<br>
-And events from the world of children’s books—and the world at large.
-</p>
+<div class="tagline">
+<p>
+Daily children’s book recommendations and events from Anita Silvey.</p>
+<p>
+Discover the stories behind the children’s book classics . . .</p>
+<p>
+The new books on their way to becoming classics . . .</p>
+<p>
+And events from the world of children’s books—and the world at large.</p>
+</div>
 <hr>
 <ul id="navigation">
   <li class="color-1"><a href="/">HOME</a></li>

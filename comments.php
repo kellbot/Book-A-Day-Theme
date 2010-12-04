@@ -71,7 +71,7 @@ $(document).ready(function(){
 <label for="author"><small>Name <?php if ($req) echo "(required)"; ?></small></label></p>
 
 <p><input type="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
-<label for="email"><small>Mail (will not be published) <?php if ($req) echo "(required)"; ?></small></label></p>
+<label for="email"><small>Email Address (will not be published) <?php if ($req) echo "(required)"; ?></small></label></p>
 
 <p><input type="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="3" />
 <label for="url"><small>Website</small></label></p>
