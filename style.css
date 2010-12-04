@@ -995,7 +995,10 @@ img.alignleft {
 
 
 #coming-up {
-  margin: 0 15px;
+  margin: 0 0px; 
+  padding: 10px;
+  height: 200px;
+  background: url('./images/OrangeBorder_280x200.png');
 }
 #coming-up li{
   clear: both;
@@ -1003,19 +1006,19 @@ img.alignleft {
 
 }
 #coming-up h2 {
-	margin-top: 20px;
+	margin-top: 15px;
 	text-align: center;
 	padding: 0;
 	color: #000;
+	text-indent: -3000px;
+	overflow: hidden;
+	background: url('./images/Coming_header.png') 15px 0 no-repeat;
     font-family: trebuchet, "Trebuchet MS", arial, verdana, sans-serif;
 }
 #coming-up .author{
   font-size: 11px;
 }
-#coming-up img{
 
-    margin: 5px auto;
-}
 #coming-up .booklist {margin-top: 0; !important}
 #coming-up .booklist li{  margin: 0px auto; width: 150px; }
 
