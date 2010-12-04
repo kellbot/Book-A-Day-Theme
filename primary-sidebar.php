@@ -13,7 +13,11 @@
 		<img class="logo" border="0" src="<?php bloginfo('template_directory'); ?>/images/bookaday_270.png" />
 	</a>
 <p class="tagline">
-Daily children's book recommendations<br> from Anita Silvey<br><?=get_bloginfo ( 'description' );  ?></p>
+Daily children’s book recommendations and events from Anita Silvey.<br>
+Discover the stories behind the children’s book classics . . .<br>
+The new books on their way to becoming classics . . .<br>
+And events from the world of children’s books—and the world at large.
+</p>
 <hr>
 <ul id="navigation">
   <li class="color-1"><a href="/">HOME</a></li>
