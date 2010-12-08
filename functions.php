@@ -3,6 +3,10 @@ if ( function_exists('register_sidebar') ) {
 	register_sidebar( array('name'=>'Primary Sidebar') );
 	register_sidebar( array('name'=>'Secondary Sidebar') );
 }
+if (function_exists('add_image_size') ) {
+	add_image_size('tiny-thumbnail', 85, 85, FALSE);
+}
+
 ?>
 <?php
 function widget_mytheme_search() {

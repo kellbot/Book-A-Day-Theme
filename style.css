@@ -869,15 +869,15 @@ img.alignleft {
 .search{float:right; margin:0 20px 0 0;}
 
 #searchform{
-	padding:14px 0;
-	margin:0;
+	margin:8px 0 0 -6px;
+	display: inline;
 	}
 
 #searchform input#s{
 	margin:0;
 	border:1px solid #ddd;
 	padding:4px;
-	width:160px;
+	width:100px;
 	color:#9b9b9b;
 	}
 	
@@ -998,7 +998,7 @@ img.alignleft {
   margin: 0 0px; 
   padding: 10px;
   height: 200px;
-  background: url('./images/OrangeBorder_280x200.png');
+  background: url('./images/OrangeBorder_280x200.png') no-repeat;
 }
 #coming-up li{
   clear: both;
@@ -1022,6 +1022,72 @@ img.alignleft {
 #coming-up .booklist {margin-top: 0; !important}
 #coming-up .booklist li{  margin: 0px auto; width: 150px; }
 
+
+
+#tools {
+  margin: 0 0px; 
+  padding: 10px 10px 10px 25px;
+  height: 100px;
+  background: url('./images/OrangeBorder_280x100.png') no-repeat;
+	font-family: verdana, trebuchet, "Trebuchet MS", arial, sans-serif; 
+	font-size: 14px;
+	line-height: 18px;
+}
+
+#tools h2 {
+	text-indent: -3000px;
+	margin: 12px 0 0 0;
+	padding: 0;
+	overflow: hidden;
+	background: url('./images/Tools_header.png') left center no-repeat;
+}
+
+#tools div {
+  margin-top: 5px;
+}
+
+.tool-label {
+	width: 100px;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+#tools img {
+	vertical-align: middle;
+}
+
+#find-a-book {
+  margin: 0 0px; 
+  padding: 10px;
+  height: 180px;
+  cursor: pointer;
+  background: url('./images/GrayBorder_280x200.png') no-repeat;
+}
+
+#find-a-book h2 {
+	text-indent: -3000px;
+	margin-top: 8px;
+	overflow: hidden;
+	background: url('./images/Find_header.png') center center no-repeat;
+}
+
+#find-a-book ul {
+	margin: 0px auto;
+	width: 256px;
+	overflow: visible;
+}
+#find-a-book li {
+  float: left;
+}
+#find-a-book p {
+	font-family: verdana, trebuchet, "Trebuchet MS", arial, sans-serif; 
+	clear: both;
+    font-size: 11px;
+    line-height: 13px;
+    padding: 5px;
+    text-align: center;
+}
 
 #also-recommended {font-family: trebuchet, "Trebuchet MS", arial, verdana, sans-serif; clear: both; margin-top: 10px; }
 #also-recommended .title {font-family: "Times New Roman", georgia, times, serif; font-size: 13px}

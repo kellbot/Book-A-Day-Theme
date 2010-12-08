@@ -22,12 +22,7 @@ The new books on their way to becoming classics . . .</p>
 <p>
 And events from the world of children’s books—and the world at large.</p>
 </div>
-<hr>
-<ul id="navigation">
-  <li class="color-1"><a href="/">HOME</a></li>
-   <li class="color-2"><a href="/about">ABOUT ANITA</a></li>
-  <li class="color-1"><a href="/archive">ARCHIVE</a></li>
-</ul>
+
 <ul>
 <?php if ( !function_exists('dynamic_sidebar')
         || !dynamic_sidebar('Primary Sidebar') ) : ?>
