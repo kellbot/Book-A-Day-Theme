@@ -41,7 +41,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 <?        global $wpdb, $wp_locale;
         
         //filters
-		$posts = get_posts('meta_key=author_sort&orderby=meta_value&order=asc&numberposts=0');
+		$posts = get_posts('meta_key=author_sort&orderby=meta_value&order=asc&numberposts=500');
 		
 		foreach ($posts as $post) : setup_postdata($post); 
 		$custom = get_post_custom();
