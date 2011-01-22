@@ -980,11 +980,16 @@ img.alignleft {
 }
 
 #heading .title{
-  color: #F26631;;
+  color: #F26631;
   font-size: 26px;
   margin-bottom: 5px;
   font-weight: bold;
   line-height: 26px;
+}
+
+#heading .title a, #heading .title a:hover {
+  color: #F26631;
+
 }
 
 #heading .today {

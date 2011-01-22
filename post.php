@@ -14,14 +14,18 @@
 			  <div class="month"><?=strtoupper(get_the_time('F')) ?></div>
 			  <div class="day"><?php the_time('j') ?></div>
 			  <?php if($title = $custom_data['book_title'][0] ) { ?>
-			      <div class="title"><?=$custom_data['book_title'][0]?></div>
+			      <div class="title"><a href="<?=the_permalink()?>"><?=$custom_data['book_title'][0]?></a></div>
 			      <div class="author">by <?=$custom_data['book_author'][0]?></div>
+				  <div class="illustrator">
+					<?php if($illustrator =  $custom_data['book_illustrator'][0]) echo "Illustrated by $illustrator" ?>
+				  </div>
+			  <?php } else if ($author = $custom_data['book_author'][0]) { ?>
+			      <div class="title"><a href="<?=the_permalink()?>"><?=$author?></a></div>
+			  <?php } else if ($illustrator =  $custom_data['book_illustrator'][0]) {?>  
+				   <div class="title"><a href="<?=the_permalink()?>"><?=$illustrator?></a></div>
 			  <?php } else { ?>
-			      <div class="title"><?=$custom_data['book_author'][0]?></div>
-			  <?php } ?>  
-			  <div class="illustrator">
-			    <?php if($illustrator =  $custom_data['book_illustrator'][0]) echo "Illustrated by $illustrator" ?>
-			  </div>
+				<div class="title"><a href="<?=the_permalink()?>"><?=$custom_data['topic'][0]?></a></div>
+			  <?php } ?>
 			  <div class="categories"><?php the_tags('', ' &bull; '); ?></div>
 			 </div>
 			<div id="cover">
