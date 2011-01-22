@@ -15,34 +15,54 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
    <div class="content <?php if ($et_threecolumn_disable == "false") { ?> <?php echo $et_columnorder; ?> <? } else { ?> content-two-column<?php echo $et_columnorder; ?> <?php } ?>">
 
+     
+ <div id="archive-heading">
+  <div class="month">FIND A BOOK</div>
+ </div> 
+
+      
+ 
+       
+   
 		<?php if (have_posts()) : ?>
 
- 	  <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
- 	  <?php /* If this is a category archive */ if (is_category()) { ?>
-		<h2 class="pagetitle">Archive for the &#8216;<?php single_cat_title(); ?>&#8217; Category</h2>
- 	  <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
-		<h2 class="pagetitle">Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h2>
- 	  <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-		<h2 class="pagetitle">Archive for <?php the_time('F jS, Y'); ?></h2>
- 	  <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-		<h2 class="pagetitle">Archive for <?php the_time('F, Y'); ?></h2>
- 	  <?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-		<h2 class="pagetitle">Archive for <?php the_time('Y'); ?></h2>
-	  <?php /* If this is an author archive */ } elseif (is_author()) { ?>
-		<h2 class="pagetitle">Author Archive</h2>
- 	  <?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-		<h2 class="pagetitle">Blog Archives</h2>
- 	  <?php } ?>
-
+      <div id="archive-navigation">
+  
+    
+      <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
+      <?php /* If this is a category archive */ if (is_category()) { ?>
+      <h2 class="title"><?php single_cat_title(); ?></h2>
+      <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
+      <h2 class="title"><?php single_tag_title(); ?></h2>
+      <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
+      <h2 class="title">Archive for <?php the_time('F jS, Y'); ?></h2>
+      <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
+      <h2 class="title">Archive for <?php the_time('F, Y'); ?></h2>
+      <?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
+      <h2 class="title">Archive for <?php the_time('Y'); ?></h2>
+      <?php /* If this is an author archive */ } elseif (is_author()) { ?>
+      <h2 class="title">Author Archive</h2>
+      <?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
+      <h2 class="title">Blog Archives</h2>
+      <?php } ?>
+  
+      <span class="return"><a href="/archive/">Return to Archive Index</a></span> 
+      </div>
+ 	  
 		<?php while (have_posts()) : the_post(); 
-		$custom = get_post_custom();?>
+		$custom = get_post_custom();
+		$cover_path = preg_replace('/\.(.{3})$/','-150x150.$1',$custom['book_cover_url'][0]);
+		?>
 		
 		<div class="post">
-				<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-				<h3><?php the_category(', ') ?> | Featured on <?php the_time('F jS') ?></h3>
-
-
-				<?php if (function_exists('the_tags')) { the_tags('<p class="postmetadata">Tags: ', ', ', '</p>'); } ?>
+				<img src='<?= $cover_path ?>' class='list-image' style="float: left;">
+		    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+		    <span class="author">by <?=$custom['book_author'][0]?></span>
+		    </h2>
+				<p class="archive-excerpt"><?php echo get_the_excerpt(); ?></p>
+		    
+		    <?php the_category(', ') ?><br>
+				<?php if (function_exists('the_tags')) { the_tags('', ', '); } ?>
 
 			</div>
 

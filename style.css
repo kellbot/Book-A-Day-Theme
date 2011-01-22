@@ -248,17 +248,22 @@ h3 { font-weight: bold; font-size: 14px;}
 	}
 	
 .post h2{
-	font:normal 28px trebuchet, "Trebuchet MS", arial, verdana, sans-serif;
+	font:normal 28px "Times New Roman", georgia, times, serif;
 	}
 	
 	h2 .smalltitle	{
 	font-size: 24px;
 	}
 .post h2 a{
-	color: #990000;
+
 	font-size: 18px;
 	text-decoration: none;
 	}
+	
+.post h2 .author {
+  font-size: 16px;
+  font-weight: normal;
+}
 	
 .post h2 a:hover{
 	color: #777;
@@ -1103,6 +1108,87 @@ img.alignleft {
   font-family: trebuchet, "Trebuchet MS", arial, verdana, sans-serif
 }
 
+/* archives */
+#archive-heading {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+    font-family: "Times New Roman", georgia, times, serif;
+}
+
+#archive-heading .month {
+  color: #B2CB6A;
+  font-size: 48px;
+  line-height: 40px;
+}
+
+#archive-heading .today {
+  font-size: 24px; 
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#archive-main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#archive-main img {
+  padding-bottom: 10px;
+  border: 0;
+}
+
+#archive-main td {
+  width: 33%;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+#archive-navigation {
+  border-bottom: 1px solid #000;
+  margin-bottom: 50px;
+}
+
+#archive-navigation .title{
+  font-size: 24px; 
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: inline;
+}
+
+#archive-navigation .return {
+  float: right;
+  padding-top: 10px;
+}
+
+#arcjump {
+	text-align: center;
+}
+
+#archive_date li {
+	width: 100%;
+	display: block;
+	background: #B2CB6A;
+	margin: 5px;
+	padding: 2px;
+	}
+
+#archive_date li a {
+	color: #000;
+	font-weight: bold;
+	
+}
+
+.archive-excerpt {
+  font-size: 14px;
+  line-height: 14px;
+  padding: 5px 0px;
+}
+
+.list-image {
+  padding-right: 5px;
+}
 /* footer */
 
 #footer {
