@@ -190,7 +190,7 @@ function widget_archives_box($args){
 	echo "<li><img src='".get_bloginfo('template_directory')."/images/book2.png'></li>";
 	echo "<li><img src='".get_bloginfo('template_directory')."/images/book3.png'></li>";
 	echo "</ul>";
-	echo "<p>Search for recommendations by age group, subject, format, date, and more.</p>";
+	echo "<p>Search the archives for recommendations by age group, book type, subject, date, and more.</p>";
 	echo $after_widget;
 }
 
