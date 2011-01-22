@@ -22,7 +22,7 @@
 			  <div class="illustrator">
 			    <?php if($illustrator =  $custom_data['book_illustrator'][0]) echo "Illustrated by $illustrator" ?>
 			  </div>
-			  <div class="categories"><?php the_category(' &bull; '); ?></div>
+			  <div class="categories"><?php the_tags('', ' &bull; '); ?></div>
 			 </div>
 			<div id="cover">
 			  <img src="<?=$custom_data['book_cover_url'][0]?>">
@@ -48,7 +48,7 @@
           </div>
       <?php } ?>
   		<div id="post-tags">
-				<?php the_tags( '<strong>Tags</strong>: ', ', '); ?>
+				<strong>Tags</strong>: <?php the_category( ', '); ?>
          	</div>
          <?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
        
