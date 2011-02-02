@@ -696,7 +696,7 @@ cite {
 .vcard{margin:0 0 6px 0;}
 
 .children{
-	margin:20px 0 0 12px;
+	margin:0 0 0 12px;
 	padding: 0;
 }
 
@@ -1134,6 +1134,14 @@ img.alignleft {
   font-weight: bold;
 }
 
+.archive-listing h2 a{
+	color: #F26631;
+}
+
+#archive_category {
+	margin-left: 25px;
+}
+
 #archive-main {
   width: 90%;
   margin: 0 auto;
@@ -1172,12 +1180,20 @@ img.alignleft {
 }
 
 #archive_date li {
-	width: 100%;
 	display: block;
 	background: #B2CB6A;
-	margin: 5px;
-	padding: 2px;
+	padding: 5px 5px 0 5px;
+	margin-top: 5px;
 	}
+
+#archive_date ul {
+	margin: 0 -5px;
+}	
+	
+#archive_date ul li{
+	background: #fff;
+	margin-top: 0px;
+}
 
 #archive_date li a {
 	color: #000;

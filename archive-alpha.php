@@ -38,30 +38,39 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
     </div>
   <ul id="archive_date"> 	
-<?        global $wpdb, $wp_locale;
+<?php        global $wpdb, $wp_locale;
         
-        //filters
-		$posts = get_posts('meta_key=author_sort&orderby=meta_value&order=asc&numberposts=500');
+       
+        $where = apply_filters('getarchives_where', "WHERE wposts.ID = wpostmeta.post_id and wpostmeta.meta_key = 'author_sort' and post_type = 'post' AND post_status = 'publish'");
+        $orderby = 'meta_value ASC';
+        $query = "SELECT wpostmeta.meta_value FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta
+        $where ORDER BY $orderby $limit";
+        
+        $key = md5($query);
+        $cache = wp_cache_get( 'wp_get_archives' , 'general');
+        if ( !isset( $cache[ $key ] ) ) {
+          $authors = $wpdb->get_results($query);
+        $cache[ $key ] = $authors;
+        wp_cache_set( 'wp_get_archives', $cache, 'general' );
+        } else {
+          $authors = $cache[ $key ];
+        }
 		
-		foreach ($posts as $post) : setup_postdata($post); 
-		$custom = get_post_custom();
-		$cover_path = preg_replace('/\.(.{3})$/','-150x150.$1',$custom['book_cover_url'][0]);
+		$oldletter = null;
+		foreach ($authors as $author) { 
+		$letter = strtoupper(substr($author->meta_value,0,1));
+		if($letter != $oldletter) {
+		  if ($oldletter != null) echo "</ul></li>";
+		  echo "<li>$letter
+		        <ul>";
+		  $oldletter = $letter;
+		}
 		?>
-		
-		<div class="post">
-				<img src='<?= $cover_path ?>' class='list-image' style="float: left;">
-		    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-		    <span class="author">by <?=$custom['book_author'][0]?></span>
-		    </h2>
-				<p class="archive-excerpt"><?php echo get_the_excerpt(); ?></p>
-		    
-		    <?php the_category(', ') ?><br>
-				<?php if (function_exists('the_tags')) { the_tags('', ', '); } ?>
+					<li><a href="/?s=<?=urlencode($author->meta_value)?>"><?php echo $author->meta_value; ?></a></li>
 
-			</div>
 <?
 			
-		endforeach;
+		}
 ?>  
   </ul>
 </div>

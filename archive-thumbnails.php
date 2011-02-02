@@ -42,7 +42,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
        <?php
        $row = 0;
        foreach($groups as $key => $group){
-         $latest = get_posts( array('numberofposts' => 1, 'tag' => str_replace(' ','-',$group) ) );
+         $latest = get_posts( array('orderby' => 'rand', 'numberofposts' => 1, 'tag' => str_replace(' ','-',$group) ) );
          $group_slug = str_replace(' ','-',$group);
          if (sizeof($latest) > 0 ) {
          
