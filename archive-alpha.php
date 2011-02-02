@@ -43,7 +43,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
        
         $where = apply_filters('getarchives_where', "WHERE wposts.ID = wpostmeta.post_id and wpostmeta.meta_key = 'author_sort' and post_type = 'post' AND post_status = 'publish'");
         $orderby = 'meta_value ASC';
-        $query = "SELECT wpostmeta.meta_value FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta
+        $query = "SELECT DISTINCT wpostmeta.meta_value FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta
         $where ORDER BY $orderby $limit";
         
         $key = md5($query);
