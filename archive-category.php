@@ -38,35 +38,10 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
     </div>
        
-    <table id="archive-main">
-       <?php
-       $row = 0;
-       foreach($cats as $key => $cat){
+	<ul id="archive_category">
+		<?php wp_list_categories('title_li=&orderby=name'); ?> 
+	</ul>
 
-         $latest = get_posts( array('numberofposts' => 1, 'category' => str_replace(' ','-',$cat->cat_ID) ) );
-
-         if (sizeof($latest) > 0 ) {
-         
-           if($row % 3 == 0) echo "<tr>";
-           
-           
-           echo "<td>";
-           
-                    $custom = get_post_custom($latest[0]->ID);
-           $path = preg_replace('/\.(.{3})$/','-150x150.$1',$custom['book_cover_url'][0]);
-           echo "<a href='/category/$cat->slug'><img src='$path' ><br>";
-           echo $cat->name;
-           
-           echo "</a></td>";
-           
-           
-           if($row % 3 == 2) echo "</tr>";
-           $row++;
-         }
-       }
-       ?>
-
-   </table>
 
 </div>
 

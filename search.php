@@ -23,7 +23,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
 			<div class="post">
 				<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-				<h3><?php the_time('F jS, Y') ?> | <?php the_category(', ') ?> | <?php comments_popup_link('0 Comments', '1 Comment', '% Comments'); ?></h3>
+				<h3><?php the_time('F jS, Y') ?> | <?php the_tags('', ', ', '') ?></h3>
 
 				<div class="entry">
 				<?php   	  
@@ -36,7 +36,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 					<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
 				</div>
 
-				<?php if (function_exists('the_tags')) { the_tags('<p class="postmetadata">Tags: ', ', ', '</p>'); } ?>
+				<?php if (function_exists('the_tags')) { the_category(', '); } ?>
 			</div>
 
 		<?php endwhile; ?>
