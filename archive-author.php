@@ -56,7 +56,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
        				<p class="archive-excerpt"><?php the_excerpt(); ?></p>
 
        		    <?php the_category(', ') ?><br>
-               Featured on <?php the_date(); ?>
+               Featured on <?= date('F t, Y',strtotime($result->post_date)); ?>
              </div>
      			</div>
    <?php endforeach;
