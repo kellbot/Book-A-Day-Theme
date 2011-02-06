@@ -66,7 +66,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 		  $oldletter = $letter;
 		}
 		?>
-					<li><a href="/?s=<?=urlencode($author->meta_value)?>"><?php echo $author->meta_value; ?></a></li>
+					<li><a href="/author/?a=<?=urlencode($author->meta_value)?>"><?php echo $author->meta_value; ?></a></li>
 
 <?
 			
