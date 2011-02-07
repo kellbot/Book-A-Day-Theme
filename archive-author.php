@@ -27,7 +27,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
        <?php if (have_posts()) : while (have_posts()) : the_post();?>
           <?php
-           $author = $_GET['a']; ?>
+           $author = is_null($_GET['a']) ? $_GET['b'] : $_GET['a']; ?>
         <?php endwhile; endif; ?>
        
     <div id="archive-navigation">
@@ -40,7 +40,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
     <table id="archive-main">
        <?php
        $row = 0;
-       $results = get_posts( array('orderby' => 'rand', 'meta_key' => 'author_sort', 'meta_value' => $author ) );
+       $results = get_posts( array('orderby' => 'rand', 'meta_value' => $author ) );
        $group_slug = str_replace(' ','-',$group);
        foreach ($results as $result) : setup_postdata($result);
          $custom = get_post_custom($result->ID);
@@ -49,7 +49,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
          <div class="post archive-listing">
      				<img src='<?= $cover_path ?>' class='list-image' style="float: left;">
        		  <div style="margin-left: 160px;">
-       		    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?=$result->post_title?>"><?= $result->post_title; ?></a>
+       		    <h2><a href="<?= get_permalink($result->ID) ?>" rel="bookmark" title="Permanent Link to <?=$result->post_title?>"><?= $result->post_title; ?></a>
        		    <span class="author">by <?=$custom['book_author'][0]?></span>
        		    </h2>
        		    <?php if (function_exists('the_tags')) { the_tags('', ', '); } ?>
@@ -60,6 +60,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
              </div>
      			</div>
    <?php endforeach;
+   wp_reset_query();
        ?>
 
    </table>

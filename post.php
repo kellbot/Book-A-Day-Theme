@@ -15,9 +15,12 @@
 			  <div class="day"><?php the_time('j') ?></div>
 			  <?php if($title = $custom_data['book_title'][0] ) { ?>
 			      <div class="title"><a href="<?=the_permalink()?>"><?=$custom_data['book_title'][0]?></a></div>
-			      <div class="author">by <?=$custom_data['book_author'][0]?></div>
+			      <div class="author">by <a href="/author/?b=<?=$custom_data['book_author'][0]?>"><?=$custom_data['book_author'][0]?></a></div>
 				  <div class="illustrator">
-					<?php if($illustrator =  $custom_data['book_illustrator'][0]) echo "Illustrated by $illustrator" ?>
+					<?php if($illustrator =  $custom_data['book_illustrator'][0]){
+					    echo "Illustrated by <a href='/author/?b=$illustrator'>$illustrator</a>";
+					    } ?>
+				  
 				  </div>
 			  <?php } else if ($author = $custom_data['book_author'][0]) { ?>
 			      <div class="title"><a href="<?=the_permalink()?>"><?=$author?></a></div>

@@ -59,7 +59,8 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 						$text = sprintf(__('%1$s %2$d'), $wp_locale->get_month($arcresult->month), $arcresult->year);
 						if ( $show_post_count )
 								$after = '&nbsp;('.$arcresult->posts.')' . $afterafter;
-						echo get_archives_link($url, $text, $format, '<li>', '</li>');
+						$link = get_archives_link($url, "See All", $format, "<span class='allmonth'>","</span>");
+						echo get_archives_link($url, $text, $format, '<li>', "$link</li>");
 						query_posts( 'monthnum='.$arcresult->month.'&year='.$arcresult->year );
 						if ( have_posts() ) : while ( have_posts() ) : the_post();
              $custom = get_post_custom();
@@ -68,20 +69,23 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
          		<div class="post">
          				<img src='<?= $cover_path ?>' class='list-image' style="float: left;">
-         		    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-         		    <span class="author">by <?=$custom['book_author'][0]?></span>
-         		    </h2>
-         				<p class="archive-excerpt"><?php echo get_the_excerpt(); ?></p>
+         		    <div style="margin-left: 155px">
+         		      <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+         		        <span class="author">by <?=$custom['book_author'][0]?></span>
+         		      </h2>
+         				  <p class="archive-excerpt"><?php echo get_the_excerpt(); ?></p>
 
-         		    <?php the_category(', ') ?><br>
-         				<?php if (function_exists('the_tags')) { the_tags('', ', '); } ?>
-
+         		      <?php the_category(', ') ?><br>
+         				  <?php if (function_exists('the_tags')) { the_tags('', ', '); } ?>
+                  <br>
+                  Featured on <?php the_date(); ?>
+                </div>
          			</div><?php
             endwhile;
             endif;
             wp_reset_query();
-            
 				}
+			
 		}
 ?>  
   </ul>

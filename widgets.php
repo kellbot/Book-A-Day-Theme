@@ -168,7 +168,7 @@ function widget_on_this_day($args){
 }
 
 function highlight_first_sentence($content) {
-  return preg_replace('/([^<>\.]+\.[^A-Za-z0-9])/','<span class="highlight">${1}</span>',$content,1);
+  return preg_replace('/([^\.]+\.[^A-Za-z0-9])/','<span class="highlight">${1}</span>',$content,1);
 }
 
 function widget_archives_box($args){
