@@ -1134,6 +1134,10 @@ img.alignleft {
   font-weight: bold;
 }
 
+.allmonth {
+	float: right;
+}
+
 .archive-listing h2 a{
 	color: #F26631;
 }

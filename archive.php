@@ -49,7 +49,9 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
       <span class="return"><a href="/archive/">Return to Archive Index</a></span> 
       </div>
  	  
-		<?php while (have_posts()) : the_post(); 
+		<?php
+		query_posts($query_string . '&posts_per_page=31'); 
+		while (have_posts()) : the_post(); 
 		$custom = get_post_custom();
 		$cover_path = preg_replace('/\.(.{3})$/','-150x150.$1',$custom['book_cover_url'][0]);
 		?>
