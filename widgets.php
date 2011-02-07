@@ -168,7 +168,7 @@ function widget_on_this_day($args){
 }
 
 function highlight_first_sentence($content) {
-  return preg_replace('/([^\.]+\.[^A-Za-z0-9])/','<span class="highlight">${1}</span>',$content,1);
+  return preg_replace('/([A-Za-z0-9][^>][^\.]+(<a[^>]+>)*[^\.]+\.\s)/','<span class="highlight">${1}</span>',$content,1);
 }
 
 function widget_archives_box($args){
@@ -209,6 +209,20 @@ function widget_tools($args){
 </form></div>';
 	echo $after_widget;
 }
+
+function display_cover_in_rss($rss_content) {
+    global $post;
+    $custom = get_post_custom($post->ID);
+     $cover = '<div style="float : left;margin-right:10px;">'.'<img src="'.$custom['book_cover_url'][0].'">'.'</div>';
+
+        $rss_content= $cover.$rss_content;
+    
+    return $rss_content;
+}
+add_filter('the_content_feed', 'display_cover_in_rss');
+
+add_filter('the_excerpt_rss', 'display_cover_in_rss');
+
 
 function previous_posts_init()
 {
