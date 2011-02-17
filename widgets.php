@@ -13,9 +13,7 @@ function widget_next_posts($limit=1){
 	global $wp_query;
 	global $wpdb; 
 	
-
-	$post_date = date('Y-m-d H:i:s');
-	
+	$post_date = current_time('mysql');
 	 $querystr = "
 	    SELECT wposts.* 
 	    FROM $wpdb->posts wposts
