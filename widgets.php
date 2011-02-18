@@ -166,7 +166,7 @@ function widget_on_this_day($args){
 }
 
 function highlight_first_sentence($content) {
-  return preg_replace('/([A-Za-z0-9][^>][^\.]+(<a[^>]+>)*[^\.]+\.\s)/','<span class="highlight">${1}</span>',$content,1);
+  return preg_replace('/.+\.\s/','<span class="highlight">${1}</span>',$content,1);
 }
 
 function widget_archives_box($args){
@@ -249,6 +249,6 @@ add_action("plugins_loaded",'this_day_init');
 add_action("plugins_loaded", "previous_posts_init");
 add_action("plugins_loaded", "next_posts_init");
 add_action("plugins_loaded", "also_rec_init");
-add_filter("the_content","highlight_first_sentence",1);
+//add_filter("the_content","highlight_first_sentence",1);
 
 
