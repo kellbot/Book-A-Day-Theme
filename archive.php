@@ -60,7 +60,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 				<img src='<?= $cover_path ?>' class='list-image' style="float: left;">
   		  <div style="margin-left: 160px;">
   		    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-  		    <span class="author">by <?=$custom['book_author'][0]?></span>
+  		    <?php if($custom['book_author'][0]) { ?><span class="author">by <?=$custom['book_author'][0]?></span><?php } ?>
   		    </h2>
   		    <?php if (function_exists('the_tags')) { the_tags('', ', '); } ?>
   				<p class="archive-excerpt"><?php echo get_the_excerpt(); ?></p>
