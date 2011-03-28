@@ -199,7 +199,9 @@ function widget_tools($args){
 	echo "Tools";
 	echo $after_title;
 	echo "<div><span class='tool-label'>SUBSCRIBE</span>";
-	echo "<a href='".get_bloginfo('rss2_url')."'><img src='".get_bloginfo('template_directory')."/images/feed_icon_9.png'></a>";
+	echo "<a href='".get_bloginfo('rss2_url')."'><img src='".get_bloginfo('template_directory')."/images/feed_icon_9.png'></a> ";
+	echo "<a href='https://www.facebook.com/pages/Childrens-Book-a-Day-Almanac/124782870923569'><img src='".get_bloginfo('template_directory')."/images/facebook_icon_4.png'></a>";
+
 	echo "</div>";
 	echo '<div><span class="tool-label">SEARCH</span> <form action="/" method="get" id="searchform">
 <input type="text" size="10" name="s" id="s" />
