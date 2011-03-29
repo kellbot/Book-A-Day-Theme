@@ -19,15 +19,19 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
 		<h2 class="pagetitle">Search Results</h2>
 
-		<?php while (have_posts()) : the_post(); ?>
+		<?php while (have_posts()) : the_post(); 
+				$custom = get_post_custom();?>
 
 			<div class="post">
 				<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+				  		    <?php if($custom['book_author'][0]) { ?><span class="author">by <?=$custom['book_author'][0]?></span><?php } ?>
+			 <?php if($custom['book_illustrator'][0]) { ?><br><span class="author">Illustrated by <?=$custom['book_illustrator'][0]?></span><?php } ?>
+ 
 				<h3><?php the_time('F jS, Y') ?> | <?php the_tags('', ', ', '') ?></h3>
 
 				<div class="entry">
 				<?php   	  
-				$custom = get_post_custom();
+				
 				$path = preg_replace('/\.(.{3})$/','-150x150.$1',$custom['book_cover_url'][0]);
 				echo "<img src='$path'>"; ?>
   	  
