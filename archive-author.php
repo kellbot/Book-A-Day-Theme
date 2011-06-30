@@ -27,7 +27,7 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
        <?php if (have_posts()) : while (have_posts()) : the_post();?>
           <?php
-           $author = is_null($_GET['a']) ? $_GET['b'] : $_GET['a']; ?>
+           $author = is_null($_GET['a']) ? $_GET['b'] : stripslashes($_GET['a']); ?>
         <?php endwhile; endif; ?>
        
     <div id="archive-navigation">

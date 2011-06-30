@@ -1225,3 +1225,15 @@ img.alignleft {
 	
 #footer p{padding:14px 0;margin: 0; color: #333; text-align:center; font-size:12px;}
 
+.sociable {
+font-family: trebuchet, "Trebuchet MS";
+}
+.sociable ul{ list-style-type: none; }
+.post .sociable li{
+ float: left;
+ list-style-type: none;
+} 
+.sociable_tagline {
+ float: left;
+ margin-right: 5px;
+}
