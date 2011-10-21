@@ -2,14 +2,67 @@
 <?php 
 					$custom_data = get_post_custom(); ?>
 		<div class="post" id="post-<?php the_ID(); ?>">
-			<div id="prev-next">
-		    <div class="prev">
-		      <?php previous_post_link("%link",'<img src="'.get_bloginfo ( 'template_directory' ).'/images/yesterday.png">'); ?>
-		     </div>
-		     <div class="next">
-		       <?php next_post_link("%link",'<img src="'.get_bloginfo ( 'template_directory' ).'/images/tomorrow.png">'); ?>
-		     </div>
-		  </div>		  <div id="heading">
+  		<?php if($current_year)
+  		{ 
+  		  $search_year = $current_year;
+  		  //loop backwards through the years until we find a post for today's date
+  		  while($prev_query->post_count < 1){
+          
+    		  $current_date = $search_year . get_the_date('-m-d');
+    		  $yesterday = strtotime($current_date.' - 1 DAY');
+
+    		  $prev_query = new WP_Query(
+    		    "posts_per_page=1&year=".date('Y',$yesterday).
+    		    "&monthnum=".date('m',$yesterday).
+    		    "&day=".date('d',$yesterday));
+    		  $search_year = $search_year - 1;
+    		  
+    		  //We started in 2010 so no point in looking earlier than that.
+    		  if($search_year < 2010) {
+    		    break;
+    		  }
+  		  }  
+  		  
+  		  //And now we do it again for tomorrow
+         $search_year = $current_year;
+    		  while($next_query->post_count < 1){
+
+      		  $current_date = $search_year . get_the_date('-m-d');
+      		  $tomorrow = strtotime($current_date.' + 1 DAY');
+           
+      		  $next_query = new WP_Query(
+      		    "posts_per_page=1&year=".date('Y',$tomorrow).
+      		    "&monthnum=".date('m',$tomorrow).
+      		    "&day=".date('d',$tomorrow));
+      		  $search_year = $search_year - 1;
+
+      		  //We started in 2010 so no point in looking earlier than that.
+      		  if($search_year < 2010) {
+      		    break;
+      		  }
+    		  }
+  		  ?>
+  		  <div id="prev-next">
+  		    <div class="prev">
+  		      <a href="<?=get_permalink($prev_query->post->ID);?>?y=<?=$current_year?>"><img src="<?= get_bloginfo( 'template_directory' ).'/images/yesterday.png'; ?>"></a>
+  		     </div>
+  		     <div class="next">
+  		       <a href="<?=get_permalink($next_query->post->ID);?>?y=<?=$current_year?>"><img src="<?= get_bloginfo( 'template_directory' ).'/images/tomorrow.png'; ?>"></a>
+  		     </div>
+  		  </div>
+  		<?php
+  		} else {
+  		?>
+  			<div id="prev-next">
+  		    <div class="prev">
+  		      <?php previous_post_link("%link",'<img src="'.get_bloginfo ( 'template_directory' ).'/images/yesterday.png">'); ?>
+  		     </div>
+  		     <div class="next">
+  		       <?php next_post_link("%link",'<img src="'.get_bloginfo ( 'template_directory' ).'/images/tomorrow.png">'); ?>
+  		     </div>
+  		  </div>
+  		<? } ?>
+		  <div id="heading">
 		  <div class="today"><?php $npost = get_next_post(false, null); if(!$npost) { echo "TODAY"; }?></div>
 			  <div class="month"><?=strtoupper(get_the_time('F')) ?></div>
 			  <div class="day"><?php the_time('j') ?></div>

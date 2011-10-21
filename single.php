@@ -15,7 +15,10 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
    <div class="content <?php if ($et_threecolumn_disable == "false") { ?> <?php echo $et_columnorder; ?> <? } else { ?> content-two-column<?php echo $et_columnorder; ?> <?php } ?>">
 
-<?php include(TEMPLATEPATH."/post.php");?>
+<?php
+if ($_GET['y']) { $current_year = $_GET['y']; }
+
+include(TEMPLATEPATH."/post.php");?>
 	
 	</div>
 	
