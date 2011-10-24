@@ -34,7 +34,9 @@ while (!have_posts()){
     break;
   }
 }
+?>
 
+<?php
 include(TEMPLATEPATH."/post.php");?>
 	
 

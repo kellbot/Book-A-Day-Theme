@@ -1,3 +1,7 @@
+<!-- Birthday Banner -->
+<div id="birthday">
+  <img style="margin-top: -10px; padding-bottom: 20px;" src="<?=get_bloginfo ( 'template_directory' ).'/images/birthdaybanner620.jpg'?>" />
+</div>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <?php 
 					$custom_data = get_post_custom(); ?>
@@ -99,7 +103,9 @@
 			<div class="tih-footer"></div>
       </div>
 			<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
-      <?php if($custom_data['also_rec']) { ?>
+
+			
+			<?php if($custom_data['also_rec']) { ?>
 			    <div id="also-recommended">
           <strong>Also recommended:</strong> <?php foreach($custom_data['also_rec'] as $key=>$title){
             echo "<span class='title'>$title</span>";
@@ -107,12 +113,38 @@
           }?> 
           </div>
       <?php } ?>
+			
+			
+			<?php if (get_the_date('Y') != $current_year) {
+        ?><div><p>
+          Originally posted <?php the_date('F j, Y')?>. Updated for <?=$current_year?>.
+          </p></div>
+        <?php
+      } else {
+        
+  		  $last_year = strtotime(get_the_date('Y-m-d').' - 1 YEAR');
+       
+  		  $last_query = new WP_Query(
+  		    "posts_per_page=1&year=".date('Y',$last_year).
+  		    "&monthnum=".date('m',$last_year).
+  		    "&day=".date('d',$last_year));
+        if($last_query->post_count > 0){
+        ?>
+        <div id="also-recommended"><strong>One year ago:</strong> <a href="<?=get_permalink($last_query->post->ID);?>">
+        <span class="title"><em><?=$last_query->post->post_title ?></em></span></a>
+        </div>
+         <?php }
+      }?>
+
+      
   		<div id="post-tags">
 				<strong>Tags</strong>: <?php the_category( ', '); ?>
          	</div>
          <?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
        
 			</div>
+
+      
 			
 		</div>
 <?php $withcomments = 1; ?>
