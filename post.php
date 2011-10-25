@@ -1,5 +1,5 @@
 <!-- Birthday Banner -->
-<div id="birthday">
+<div id="birthday" style="height: 179px">
   <img style="margin-top: -10px; padding-bottom: 20px;" src="<?=get_bloginfo ( 'template_directory' ).'/images/birthdaybanner620.jpg'?>" />
 </div>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
