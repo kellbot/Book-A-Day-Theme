@@ -18,6 +18,8 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
    <div class="content <?php if ($et_threecolumn_disable == "false") { ?> <?php echo $et_columnorder; ?> <?php } else { ?> content-two-column<?php echo $et_columnorder; ?> <?php } ?>">
 
 <?php
+date_default_timezone_set(get_option('timezone_string'));
+
 /* This is for the circular nature of the almanac. If there's no post for today, look for one today of last year. */
 $current_year = date('Y');
 $current_month = date('m');

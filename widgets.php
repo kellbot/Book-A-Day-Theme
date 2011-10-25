@@ -32,7 +32,6 @@ function widget_next_posts($limit=1){
 	 $pageposts = $wpdb->get_results($querystr, OBJECT);
  
 
-		echo mysql_error();
 	 return $pageposts;
 }
 //returns an array of the 5 (or $limit) posts previous 
