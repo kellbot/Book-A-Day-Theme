@@ -56,6 +56,7 @@
   		  </div>
   		<?php
   		} else {
+			$current_year = get_the_date('Y');
   		?>
   			<div id="prev-next">
   		    <div class="prev">
