@@ -1,6 +1,8 @@
 <!-- Birthday Banner -->
-<div id="birthday" style="height: 179px">
-  <img style="margin-top: -10px; padding-bottom: 20px;" src="<?=get_bloginfo ( 'template_directory' ).'/images/birthdaybanner620.jpg'?>" />
+<div id="birthday">
+  <a href="http://www.facebook.com/wrinkleintime" onClick=”javascript: pageTracker._trackPageview (‘/outgoing/facebook.com’);">
+	<img style="margin-top: -10px; padding-bottom: 20px;" src="<?=get_bloginfo ( 'template_directory' ).'/images/witfl.gif'?>" />
+  </a>
 </div>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <?php 
@@ -11,7 +13,7 @@
   		  $search_year = $current_year;
   		  //loop backwards through the years until we find a post for today's date
   		  while($prev_query->post_count < 1){
-          
+
     		  $current_date = $search_year . get_the_date('-m-d');
     		  $yesterday = strtotime($current_date.' - 1 DAY');
 
@@ -20,7 +22,8 @@
     		    "&monthnum=".date('m',$yesterday).
     		    "&day=".date('d',$yesterday));
     		  $search_year = $search_year - 1;
-    		  
+
+  
     		  //We started in 2010 so no point in looking earlier than that.
     		  if($search_year < 2010) {
     		    break;
@@ -115,32 +118,43 @@
           </div>
       <?php } ?>
 			
+			<?php if($custom_data['flex_data']) { ?>
+			    <div id="flex">
+				<?php if($custom_data['flex_label']){ ?>
+					<strong><?=$custom_data['flex_label'][0]?></strong> 
+				<?php } ?>
+				<?=$custom_data['flex_data'][0] ?>
+				</div>
 			
-			<?php if (get_the_date('Y') != $current_year) {
-        ?><div><p>
-          Originally posted <?php the_date('F j, Y')?>. Updated for <?=$current_year?>.
-          </p></div>
+			<?php } ?>
+			
+		<div style="clear:both"><p>
+          Originally posted <?php the_date('F j, Y')?>. 
+		  <?php if (get_the_date('Y') != $current_year) {
+			?>Updated for <?=$current_year?>.
+          <?php } ?>
+		  </p></div>
         <?php
-      } else {
-        
-  		  $last_year = strtotime(get_the_date('Y-m-d').' - 1 YEAR');
-       
-  		  $last_query = new WP_Query(
+
+	  $last_year = strtotime(get_the_date('Y-m-d').' - 1 YEAR');
+
+  		$last_query = new WP_Query(
   		    "posts_per_page=1&year=".date('Y',$last_year).
   		    "&monthnum=".date('m',$last_year).
   		    "&day=".date('d',$last_year));
-        if($last_query->post_count > 0){
+  			if($last_query->post_count > 0){
         ?>
         <div id="also-recommended"><strong>One year ago:</strong> <a href="<?=get_permalink($last_query->post->ID);?>">
         <span class="title"><em><?=$last_query->post->post_title ?></em></span></a>
         </div>
          <?php }
-      }?>
+      ?>
 
       
   		<div id="post-tags">
 				<strong>Tags</strong>: <?php the_category( ', '); ?>
          	</div>
+				<?php if( function_exists( do_sociable() ) ){ do_sociable(); } ?>
          <?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
        
 			</div>
@@ -148,6 +162,8 @@
       
 			
 		</div>
+		
+
 <?php $withcomments = 1; ?>
   <h2 class="green_bar">COMMENTS</h2>
 	<?php comments_template(); ?>

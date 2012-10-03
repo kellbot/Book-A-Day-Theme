@@ -1103,6 +1103,8 @@ img.alignleft {
 #also-recommended .title {font-family: "Times New Roman", georgia, times, serif; font-size: 13px}
 #also-recommended .dot { margin: 0px 10px; color: #F26631}
 
+#flex{font-family: trebuchet, "Trebuchet MS", arial, verdana, sans-serif; clear: both; margin-top: 10px; }
+
 #post-tags {
   margin-top: 10px;
   font-family: "Times New Roman", georgia, times, serif; font-size: 13px;
@@ -1227,8 +1229,23 @@ img.alignleft {
 
 .sociable {
 font-family: trebuchet, "Trebuchet MS";
+height: 20px;
+margin-top: 10px;
 }
-.sociable ul{ list-style-type: none; }
+.sociable ul {
+	display: block;
+	margin: 0 !important;
+	padding: 0 !important;
+	 list-style-type: none;
+}
+.sociable ul li {
+	background: none;
+	display: inline !important;
+	list-style-type: none;
+	margin: 0;
+	padding: 3px;
+    float:left;
+}
 .post .sociable li{
  float: left;
  list-style-type: none;
@@ -1236,4 +1253,5 @@ font-family: trebuchet, "Trebuchet MS";
 .sociable_tagline {
  float: left;
  margin-right: 5px;
+ font-weight: bold;
 }
