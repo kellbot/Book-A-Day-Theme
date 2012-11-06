@@ -1,7 +1,7 @@
 <!-- Birthday Banner -->
 <div id="birthday">
-  <a href="http://www.facebook.com/wrinkleintime" onClick=”javascript: pageTracker._trackPageview (‘/outgoing/facebook.com’);">
-	<img style="margin-top: -10px; padding-bottom: 20px;" src="<?=get_bloginfo ( 'template_directory' ).'/images/witfl.gif'?>" />
+  <a href="http://us.macmillan.com/childrensbookadayalmanac/AnitaSilvey" onClick=”javascript: pageTracker._trackPageview (‘/outgoing/us.macmillan.com’);">
+	<img style="margin-top: -10px; padding-bottom: 20px;" src="<?=get_bloginfo ( 'template_directory' ).'/images/bookaday620x169_2.gif'?>" />
   </a>
 </div>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
