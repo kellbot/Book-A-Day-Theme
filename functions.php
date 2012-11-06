@@ -370,4 +370,11 @@ function starter_header_style() {
 if ( function_exists('add_custom_image_header') ) {
 	add_custom_image_header('starter_header_style', 'starter_admin_header_style');
 }
+
+add_filter('query_vars', 'parameter_queryvars' );
+function parameter_queryvars( $qvars )
+{
+$qvars[] = 'archive_month';
+return $qvars;
+}
 ?>

@@ -40,8 +40,8 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
   <ul id="archive_date"> 	
 <?        global $wpdb, $wp_locale;
 
-     	 $where = apply_filters('getarchives_where', "WHERE post_type = 'post' AND post_status = 'publish'");
-		$query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC $limit";
+     	$where = apply_filters('getarchives_where', "WHERE post_type = 'post' AND post_status = 'publish'");
+		$query = "SELECT MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY MONTH(post_date) ORDER BY post_date DESC $limit";
 		$key = md5($query);
 		$cache = wp_cache_get( 'wp_get_archives' , 'general');
 		if ( !isset( $cache[ $key ] ) ) {

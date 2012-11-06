@@ -1103,6 +1103,8 @@ img.alignleft {
 #also-recommended .title {font-family: "Times New Roman", georgia, times, serif; font-size: 13px}
 #also-recommended .dot { margin: 0px 10px; color: #F26631}
 
+#teaching-books { font-size: 14px; margin: 12px 0} 
+
 #flex{font-family: trebuchet, "Trebuchet MS", arial, verdana, sans-serif; clear: both; margin-top: 10px; }
 
 #post-tags {
@@ -1185,11 +1187,13 @@ img.alignleft {
 	text-align: center;
 }
 
-#archive_date li {
+#archive_date .day-number {
 	display: block;
 	background: #B2CB6A;
-	padding: 5px 5px 0 5px;
+	padding: 5px 5px 3px 7px;
 	margin-top: 5px;
+	font-weight: bold;
+	font-size: 14px;
 	}
 
 #archive_date ul {

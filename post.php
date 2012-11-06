@@ -8,8 +8,9 @@
 <?php 
 					$custom_data = get_post_custom(); ?>
 		<div class="post" id="post-<?php the_ID(); ?>">
-  		<?php if($current_year)
-  		{ 
+  		<?php if(!$current_year) {
+				$current_year = date('Y');
+			}
   		  $search_year = $current_year;
   		  //loop backwards through the years until we find a post for today's date
   		  while($prev_query->post_count < 1){
@@ -47,7 +48,7 @@
       		  if($search_year < 2010) {
       		    break;
       		  }
-    		  }
+			}
   		  ?>
   		  <div id="prev-next">
   		    <div class="prev">
@@ -57,19 +58,7 @@
   		       <a href="<?=get_permalink($next_query->post->ID);?>?y=<?=$current_year?>"><img src="<?= get_bloginfo( 'template_directory' ).'/images/tomorrow.png'; ?>"></a>
   		     </div>
   		  </div>
-  		<?php
-  		} else {
-			$current_year = get_the_date('Y');
-  		?>
-  			<div id="prev-next">
-  		    <div class="prev">
-  		      <?php previous_post_link("%link",'<img src="'.get_bloginfo ( 'template_directory' ).'/images/yesterday.png">'); ?>
-  		     </div>
-  		     <div class="next">
-  		       <?php next_post_link("%link",'<img src="'.get_bloginfo ( 'template_directory' ).'/images/tomorrow.png">'); ?>
-  		     </div>
-  		  </div>
-  		<? } ?>
+  		
 		  <div id="heading">
 		  <div class="today"><?php $npost = get_next_post(false, null); if(!$npost) { echo "TODAY"; }?></div>
 			  <div class="month"><?=strtoupper(get_the_time('F')) ?></div>
@@ -127,36 +116,51 @@
 				</div>
 			
 			<?php } ?>
-			
+		<?php //Originally Posted ?>	
 		<div style="clear:both"><p>
           Originally posted <?php the_date('F j, Y')?>. 
 		  <?php if (get_the_date('Y') != $current_year) {
 			?>Updated for <?=$current_year?>.
           <?php } ?>
 		  </p></div>
-        <?php
 
-	  $last_year = strtotime(get_the_date('Y-m-d').' - 1 YEAR');
+		<?php // Tags ?>
+  		<div id="post-tags">
+			<strong>Tags</strong>: <?php the_category( ', '); ?>
+       	</div>
+
+		<?php // Teaching Books 
+		if($custom_data['teachingbooks']): ?>
+			<div id="teaching-books" style="clear:both">
+				<strong>TeachingBooks.net</strong> for <a href="<?=$custom_data['teachingbooks'][0]?>"><?=$custom_data['book_title'][0]?></a>
+			</div>
+		<?php endif; ?>
+		
+		<?php //One Year Ago 
+		$last_year = strtotime(get_the_date('Y-m-d').' - 1 YEAR');
 
   		$last_query = new WP_Query(
   		    "posts_per_page=1&year=".date('Y',$last_year).
   		    "&monthnum=".date('m',$last_year).
   		    "&day=".date('d',$last_year));
-  			if($last_query->post_count > 0){
-        ?>
-        <div id="also-recommended"><strong>One year ago:</strong> <a href="<?=get_permalink($last_query->post->ID);?>">
-        <span class="title"><em><?=$last_query->post->post_title ?></em></span></a>
-        </div>
-         <?php }
-      ?>
+  		if($last_query->post_count > 0): ?>
+			<div id="one-year-ago"><strong>One year ago:</strong> <a href="<?=get_permalink($last_query->post->ID);?>">
+				<span class="title"><em><?=$last_query->post->post_title ?></em></span></a>
+		</div>
+		<?php endif;  ?>
+
+		<?php 
+		// Sharing 
+		if( function_exists(do_sociable) ){ do_sociable(); } ?>
+         
+		 
+		 <?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
+       
+
+		
+
 
       
-  		<div id="post-tags">
-				<strong>Tags</strong>: <?php the_category( ', '); ?>
-         	</div>
-				<?php if( function_exists( do_sociable() ) ){ do_sociable(); } ?>
-         <?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
-       
 			</div>
 
       
