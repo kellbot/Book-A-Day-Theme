@@ -132,7 +132,7 @@
 		<?php // Teaching Books 
 		if($custom_data['teachingbooks']): ?>
 			<div id="teaching-books" style="clear:both">
-				<strong>TeachingBooks.net</strong> for <a href="<?=$custom_data['teachingbooks'][0]?>"><?=$custom_data['book_title'][0]?></a>
+				<strong>Instructional materials from Teachingbooks.net</strong> for <a href="<?=$custom_data['teachingbooks'][0]?>"><?=$custom_data['book_title'][0]?></a>
 			</div>
 		<?php endif; ?>
 		
