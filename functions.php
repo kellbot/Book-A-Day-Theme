@@ -9,17 +9,17 @@ if (function_exists('add_image_size') ) {
 
 ?>
 <?php
-function widget_mytheme_search() {
+function widget_bada_search() {
 ?>
 <h2>Search</h2>
 <form id="searchform" method="get" action="<?php bloginfo('home'); ?>/"> <input type="text" value="type, hit enter" onfocus="if (this.value == 'type, hit enter') {this.value = '';}" onblur="if (this.value == '') {this.value = 'type, hit enter';}" size="18" maxlength="50" name="s" id="s" /> </form> 
 <?php
 }
 if ( function_exists('register_sidebar_widget') )
-    register_sidebar_widget(__('Search'), 'widget_mytheme_search');
+    register_sidebar_widget(__('Search'), 'widget_bada_search');
 ?>
 <?php
-function mytheme_comment($comment, $args, $depth) {
+function bada_comment($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment; ?>
    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
      <div id="comment-<?php comment_ID(); ?>">
@@ -73,8 +73,8 @@ add_shortcode('built-on', 'footer_built_on');
 
 ?>
 <?php
-$themename = "ET-Starter";
-$shortname = "et";
+$themename = "Book-A-Day-Almanac";
+$shortname = "bada";
 
 $options = array (	
 			
@@ -134,7 +134,7 @@ $options = array (
 
 
 
-function mytheme_add_admin() {
+function bada_add_admin() {
 
     global $themename, $shortname, $options;
 
@@ -162,11 +162,11 @@ function mytheme_add_admin() {
         }
     }
 
-    add_theme_page(Theme." Options", "".Theme." Options", 'edit_themes', basename(__FILE__), 'mytheme_admin');
+    add_theme_page(Theme." Options", "".Theme." Options", 'edit_themes', basename(__FILE__), 'bada_admin');
 
 }
 
-function mytheme_admin() {
+function bada_admin() {
 
     global $themename, $shortname, $options;
 
@@ -333,7 +333,7 @@ function mytheme_admin() {
 <?php
 }
 
-add_action('admin_menu', 'mytheme_add_admin'); ?>
+add_action('admin_menu', 'bada_add_admin'); ?>
 <?php
 define('HEADER_TEXTCOLOR', '');
 define('HEADER_IMAGE', '%s/images/header.jpg'); // %s is theme dir uri
@@ -377,4 +377,41 @@ function parameter_queryvars( $qvars )
 $qvars[] = 'archive_month';
 return $qvars;
 }
+
+add_action('pre_get_posts', post_repeater);
+function post_repeater($query){
+	$today = getdate();
+	if ($query->is_home() &&  $query->is_main_query()){
+		$query->set('monthnum',$today["mon"]);
+		$query->set('day',$today["mday"]);
+		$query->set('posts_per_page',1);
+	}
+}
+
+//template tag for showing the link to tomorrow's post
+function bada_tomorrow_link($post_date){
+	
+	$tomorrow = strtotime($post_date . ' + 1 day');
+	$tomorrow_query = new WP_Query(
+      		    "posts_per_page=1&monthnum=".date('m', $tomorrow) .
+      		    "&day=" . date('d', $tomorrow));
+ 
+	wp_reset_postdata();
+	$base_link = get_permalink($tomorrow_query->post->ID);
+	return $base_link;
+}
+
+function bada_yesterday_link($post_date){
+	
+	$yesterday = strtotime($post_date . ' - 1 day');
+	$yesterday_query = new WP_Query(
+      		    "posts_per_page=1&monthnum=".date('m', $yesterday) .
+      		    "&day=" . date('d', $yesterday));
+ 
+	wp_reset_postdata();
+	$base_link = get_permalink($yesterday_query->post->ID);
+	return $base_link;
+}
+
+
 ?>
