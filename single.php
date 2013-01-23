@@ -11,9 +11,9 @@
 <?php get_header(); ?>
 
 <?php /* Enables two or three columns */
-if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sidebar.php");?><? } ?>
+if ($bada_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sidebar.php");?><? } ?>
 
-   <div class="content <?php if ($et_threecolumn_disable == "false") { ?> <?php echo $et_columnorder; ?> <? } else { ?> content-two-column<?php echo $et_columnorder; ?> <?php } ?>">
+   <div class="content <?php if ($bada_threecolumn_disable == "false") { ?> <?php echo $bada_columnorder; ?> <? } else { ?> content-two-column<?php echo $bada_columnorder; ?> <?php } ?>">
 
 <?php
 if ($_GET['y']) { $current_year = $_GET['y']; }

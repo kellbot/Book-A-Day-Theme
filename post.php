@@ -8,54 +8,13 @@
 <?php 
 					$custom_data = get_post_custom(); ?>
 		<div class="post" id="post-<?php the_ID(); ?>">
-  		<?php if(!$current_year) {
-				$current_year = date('Y');
-			}
-  		  $search_year = $current_year;
-  		  //loop backwards through the years until we find a post for today's date
-  		  while($prev_query->post_count < 1){
 
-    		  $current_date = $search_year . get_the_date('-m-d');
-    		  $yesterday = strtotime($current_date.' - 1 DAY');
-
-    		  $prev_query = new WP_Query(
-    		    "posts_per_page=1&year=".date('Y',$yesterday).
-    		    "&monthnum=".date('m',$yesterday).
-    		    "&day=".date('d',$yesterday));
-    		  $search_year = $search_year - 1;
-
-  
-    		  //We started in 2010 so no point in looking earlier than that.
-    		  if($search_year < 2010) {
-    		    break;
-    		  }
-  		  }  
-  		  
-  		  //And now we do it again for tomorrow
-         $search_year = $current_year;
-    		  while($next_query->post_count < 1){
-
-      		  $current_date = $search_year . get_the_date('-m-d');
-      		  $tomorrow = strtotime($current_date.' + 1 DAY');
-           
-      		  $next_query = new WP_Query(
-      		    "posts_per_page=1&year=".date('Y',$tomorrow).
-      		    "&monthnum=".date('m',$tomorrow).
-      		    "&day=".date('d',$tomorrow));
-      		  $search_year = $search_year - 1;
-
-      		  //We started in 2010 so no point in looking earlier than that.
-      		  if($search_year < 2010) {
-      		    break;
-      		  }
-			}
-  		  ?>
   		  <div id="prev-next">
   		    <div class="prev">
-  		      <a href="<?=get_permalink($prev_query->post->ID);?>?y=<?=$current_year?>"><img src="<?= get_bloginfo( 'template_directory' ).'/images/yesterday.png'; ?>"></a>
+  		      <a href="<?=bada_yesterday_link(get_the_date());?>"><img src="<?= get_bloginfo( 'template_directory' ).'/images/yesterday.png'; ?>"></a>
   		     </div>
   		     <div class="next">
-  		       <a href="<?=get_permalink($next_query->post->ID);?>?y=<?=$current_year?>"><img src="<?= get_bloginfo( 'template_directory' ).'/images/tomorrow.png'; ?>"></a>
+  		       <a href="<?=bada_tomorrow_link(get_the_date());?>"><img src="<?= get_bloginfo( 'template_directory' ).'/images/tomorrow.png'; ?>"></a>
   		     </div>
   		  </div>
   		
