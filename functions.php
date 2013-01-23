@@ -381,7 +381,7 @@ return $qvars;
 add_action('pre_get_posts', post_repeater);
 function post_repeater($query){
 	$today = getdate();
-	if ($query->is_home() &&  $query->is_main_query()){
+	if (($query->is_home() &&  $query->is_main_query()) || $query->is_feed()){
 		$query->set('monthnum',$today["mon"]);
 		$query->set('day',$today["mday"]);
 		$query->set('posts_per_page',1);

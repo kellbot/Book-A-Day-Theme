@@ -19,24 +19,6 @@ if ($et_threecolumn_disable == "false") { ?> <?php include(TEMPLATEPATH."/sideba
 
 <?php
 date_default_timezone_set(get_option('timezone_string'));
-
-// /* This is for the circular nature of the almanac. If there's no post for today, look for one today of last year. */
-// $current_year = date('Y');
-// $current_month = date('m');
-// $current_day = date('d');
-// 
-// $show_year = $current_year;
-// 
-// query_posts("monthnum=$current_month&day=$current_day&year=$show_year&posts_per_page=1");
-// while (!have_posts()){
-//   $show_year = $show_year-1; 
-//   wp_reset_query();
-//   query_posts("monthnum=$current_month&day=$current_day&year=$show_year&posts_per_page=1");
-//   if ($show_year < 2010) {
-//     break;
-//   }
-// }
-
 ?>
 
 <?php
